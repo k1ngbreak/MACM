@@ -21,8 +21,24 @@ begin
 
   sig_4 <= (2=>'1', others => '0');
   
-  -- Architecture à compléter
+  add4: entity work.addComplex
+    port map(pc_reg_out, sig_4, '0', sig_pc_plus_4);
   
+    pc_plus_4 <= sig_pc_plus_4;
+    pc_inter <= npc when PCSrc_ER = '1' else
+      sig_pc_plus_4;
+    
+    pc_reg_in <= pc_inter when Bpris_EX='0' else
+      npc_fw_br;
+
+    reg_pc: entity work.Reg32
+      port map(pc_reg_in, pc_reg_out, GEL_LI, '1', clk);
+
+    mem_inst: entity work.inst_mem
+      port map(pc_reg_out, i_FE);
+
+    
+
 
 end architecture;
 
