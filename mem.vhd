@@ -303,8 +303,3 @@ end architecture;
 --       end if; 
 --   end process;
 -- end architecture;
-
-
-
-
-
