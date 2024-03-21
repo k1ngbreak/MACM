@@ -40,12 +40,10 @@ begin
     simulation : process
     begin
         npc <= (others =>'0');
-        PCSrc_ER <= '1';
-        pc_plus_4 <= (others => '0');
+        PCSrc_ER <= '1';   
         npc_fw_br <= (others => '1');
         Bpris_EX <= '1';
         GEL_LI <= '1';
-        I_FE <= (others => '0');
         clk <='0';
 
         wait for clk_period;
